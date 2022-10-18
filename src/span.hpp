@@ -75,12 +75,12 @@ public:
 	}
 
 	constexpr iterator begin()const noexcept {
-		return { data(),data(),data() + size()};
+		return { _ptr,_ptr,_ptr + _size};
 	}
 
 	constexpr iterator end()const noexcept {
-		const auto End = data() + size();
-		return { End,data,End };
+		const auto End = _ptr + _size;
+		return { End,_ptr,End};
 	}
 
 
