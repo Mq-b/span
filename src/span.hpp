@@ -58,6 +58,7 @@ public:
 	using const_pointer = const Ty*;
 	using reference = Ty&;
 	using iterator = span_iterator<Ty>;
+	using reverse_iterator = std::reverse_iterator<iterator>;
 
 	template<typename T>
 	constexpr span(T &v)noexcept :_ptr{ std::data(v)}, _size{std::size(v)} {}
@@ -83,6 +84,13 @@ public:
 		return { End,_ptr,End};
 	}
 
+	constexpr reverse_iterator rbegin()const noexcept {
+		return reverse_iterator{ end() };
+	}
+
+	constexpr reverse_iterator rend()const noexcept {
+		return reverse_iterator{ begin() };
+	}
 
 private:
 	pointer _ptr;
