@@ -6,9 +6,9 @@
 
 template<typename Ty>
 struct span_iterator {
-	using value_type = std::remove_cv_t<Ty>;
-	using pointer = Ty*;
-	using reference = Ty&;
+	using value_type	= std::remove_cv_t<Ty>;
+	using pointer		= Ty*;
+	using reference		= Ty&;
 
 	constexpr reference operator*()const noexcept {
 		return *_ptr;
@@ -23,13 +23,13 @@ struct span_iterator {
 		return *this;
 	}
 
-	constexpr span_iterator& operator++(int)noexcept {
+	constexpr span_iterator operator++(int)noexcept {
 		span_iterator tmp{ *this };
 		++*this;
 		return tmp;
 	}
 
-	constexpr span_iterator operator--()noexcept {
+	constexpr span_iterator& operator--()noexcept {
 		--_ptr;
 		return *this;
 	}
@@ -44,6 +44,10 @@ struct span_iterator {
 		return v1._ptr == v2._ptr;
 	}
 
+	friend constexpr bool operator!=(const span_iterator& v1, const span_iterator& v2) {
+		return !(v1 == v2);
+	}
+
 	pointer _ptr   = nullptr;
 	pointer _begin = nullptr;
 	pointer _end   = nullptr;
@@ -53,12 +57,12 @@ template<typename Ty>
 class span {
 public:
 
-	using element_type = Ty;
-	using pointer = Ty*;
-	using const_pointer = const Ty*;
-	using reference = Ty&;
-	using iterator = span_iterator<Ty>;
-	using reverse_iterator = std::reverse_iterator<iterator>;
+	using element_type		=	Ty;
+	using pointer			=	Ty*;
+	using const_pointer		= const Ty*;
+	using reference			= Ty&;
+	using iterator			= span_iterator<Ty>;
+	using reverse_iterator	= std::reverse_iterator<iterator>;
 
 	template<typename T>
 	constexpr span(T &v)noexcept :_ptr{ std::data(v)}, _size{std::size(v)} {}
