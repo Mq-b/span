@@ -14,12 +14,15 @@ int main() {
 	span<std::vector<int>>sp3(v2);
 	std::cout << sp3.size() << std::endl;
 	
-
 	for (auto i : sp3) {
-		endl(std::cout);
 		for (auto j : i) {
 			std::cout << j << ' ';
 		}
 	}
-	
+
+	std::cout << '\n';
+
+	for (auto i = sp2.begin(); i != sp2.end(); i++) {
+		std::cout << *i << ' ';
+	}
 }
