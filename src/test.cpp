@@ -3,6 +3,13 @@
 #include<vector>
 #include<array>
 
+template<typename T>
+void print(span<T> arr) {
+	for (auto i : arr)
+		std::cout << i << ' ';
+	std::cout << '\n';
+}
+
 int main() {
 	int array[1024]{};
 	span<int> sp(array);
@@ -66,4 +73,7 @@ int main() {
 
 	for (auto i : sp5.subspan(2, 7))
 		std::cout << i << ' ';
+
+	print<int>(v);
+	
 }
