@@ -4,17 +4,22 @@
 
 只需要将`span.hpp`包含即可使用
 
-```
+```C++
 #include"span.hpp"
 #include<iostream>
-void print(span<int>sp) {
+#include<string>
+#include<vector>
+
+template<class T>
+void print(span<T>sp) {
 	for (auto i : sp)
 		std::cout << i << ' ';
 	std::cout << '\n';
 }
 int main() {
-	int array[]{ 6,6,6,6 };
-	print(array);
+	char str[]{ "abcdefg" };
+	std::vector<std::string>v{ "*","*","^","^" };
+	print<char>(str);
+	print<std::string>(v);
 }
-
-```C++
+```
