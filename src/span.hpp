@@ -74,14 +74,14 @@ template<typename Ty>
 class span {
 public:
 
-	using element_type		=	Ty;
-	using size_type			= size_t;
-	using pointer			=	Ty*;
-	using const_pointer		= const Ty*;
-	using reference			= Ty&;
-	using const_reference	= const Ty&;
-	using iterator			= span_iterator<Ty>;
-	using reverse_iterator	= std::reverse_iterator<iterator>;
+	using element_type             =	Ty;
+	using size_type                = size_t;
+	using pointer                  =	Ty*;
+	using const_pointer            = const Ty*;
+	using reference                = Ty&;
+	using const_reference          = const Ty&;
+	using iterator                 = span_iterator<Ty>;
+	using reverse_iterator         = std::reverse_iterator<iterator>;
 
 	constexpr span()noexcept :_ptr{ nullptr }, _size(0) {}
 
