@@ -1,6 +1,8 @@
 #include"span.hpp"
 #include<iostream>
 #include<vector>
+#include<array>
+
 int main() {
 	int array[1024]{};
 	span<int> sp(array);
@@ -25,4 +27,43 @@ int main() {
 	for (auto i = sp2.begin(); i != sp2.end(); i++) {
 		std::cout << *i << ' ';
 	}
+
+	span<int>sp4(sp2);
+	std::cout << sp4.data() << ' ' << sp2.data() << '\n';
+	
+	auto i =sp = sp;
+	std::cout << sp.data() << ' ' << sp.data()<< ' ' << i.data() << '\n';
+
+	std::cout << sp.size_types() << ' ' << sp2.size_types() << ' ' << sp3.size_types() << '\n';
+
+	std::cout << sp2[2] << ' ' << sp2.front() << ' ' << sp2.back() << std::endl;
+
+	auto n = sp2.first();
+	for (auto i : n) {
+		std::cout << i << ' ';
+	}
+	std::cout << '\n';
+
+	n = sp2.first(4);
+	std::cout << n.size() << std::endl;
+	for (auto i : n) {
+		std::cout << i << ' ';
+	}
+	std::cout << '\n';
+
+	n = sp2.last(3);
+	for (auto i : n) {
+		std::cout << i << ' ';
+	}
+	std::cout << '\n';
+
+	std::array<int, 10>arr{ 1,2,3,4,5,6,7,8,9,10 };
+	span<int>sp5(arr);
+	for (auto i : sp5) {
+		std::cout << i << ' ';
+	}
+	std::cout << '\n';
+
+	for (auto i : sp5.subspan(2, 7))
+		std::cout << i << ' ';
 }
