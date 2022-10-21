@@ -76,4 +76,7 @@ int main() {
 
 	print<int>(v);
 	
+	std::cout << *(arr.begin() + 5) << std::endl;
+	std::cout << *(arr.end() - 5) << std::endl;
+
 }

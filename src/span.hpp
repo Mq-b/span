@@ -47,13 +47,13 @@ struct span_iterator {
 
 	constexpr span_iterator operator+(size_t n)noexcept {
 		span_iterator tmp{ *this };
-		++tmp;
+		tmp._ptr += n;
 		return tmp;
 	}
 
 	constexpr span_iterator operator-(size_t n)noexcept {
 		span_iterator tmp{ *this };
-		--tmp;
+		tmp._ptr += n;
 		return tmp;
 	}
 
